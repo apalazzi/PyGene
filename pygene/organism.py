@@ -350,11 +350,11 @@ class Organism(BaseOrganism):
         Produce a detailed human-readable report on
         this organism, its genotype and phenotype
         """
-        print "Organism %s:" % self.__class__.__name__
+        print("Organism %s:" % self.__class__.__name__)
 
-        print "  Fitness: %s" % self.get_fitness()
+        print("  Fitness: %s" % self.get_fitness())
         for k,v in self.genes.items():
-            print "  Gene: %s = %s" % (k, v)
+            print("  Gene: %s = %s" % (k, v))
 
     def xmlDumpSelf(self, doc, parent):
         """
@@ -702,15 +702,15 @@ class MendelOrganism(BaseOrganism):
         Produce a detailed human-readable report on
         this organism, its genotype and phenotype
         """
-        print "Organism %s:" % self.__class__.__name__
+        print("Organism %s:" % self.__class__.__name__)
 
-        print "  Fitness: %s" % self.get_fitness()
+        print("  Fitness: %s" % self.get_fitness())
         for k,v in self.genes.items():
-            print "  Gene: %s" % k
-            print "    Phenotype: %s" % self[k]
-            print "    Genotype:"
-            print "      %s" % v[0]
-            print "      %s" % v[1]
+            print( "  Gene: %s" % k)
+            print( "    Phenotype: %s" % self[k])
+            print( "    Genotype:")
+            print( "      %s" % v[0])
+            print( "      %s" % v[1])
 
     def xmlDumpSelf(self, doc, parent):
         """
