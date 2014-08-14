@@ -8,7 +8,7 @@ Genes support the following python operators:
 These genes work via classical Mendelian genetics
 """
 
-import sys, new
+import sys #, new
 from random import random, randint, uniform, choice
 from math import sqrt
 
@@ -657,33 +657,33 @@ class XorBitGene(BitGene):
 # Necessary for config loading.
 ##
 
-def _new_factory(cls):
-    "Creates gene factories"
-    def factory(name, **kw):
-        "Gene factory"
-        for key in kw.keys():
-            if key not in cls.fields:
-                raise Exception("Tried to create a gene with an invalid field: " + key)
-        return new.classobj(name, (cls,), kw)
-    return factory
+# def _new_factory(cls):
+    # "Creates gene factories"
+    # def factory(name, **kw):
+        # "Gene factory"
+        # for key in kw.keys():
+            # if key not in cls.fields:
+                # raise Exception("Tried to create a gene with an invalid field: " + key)
+        # return new.classobj(name, (cls,), kw)
+    # return factory
 
-ComplexGeneFactory  = _new_factory(ComplexGene)
-DiscreteGeneFactory = _new_factory(DiscreteGene)
+# ComplexGeneFactory  = _new_factory(ComplexGene)
+# DiscreteGeneFactory = _new_factory(DiscreteGene)
 
-FloatGeneFactory         = _new_factory(FloatGene)
-FloatGeneMaxFactory      = _new_factory(FloatGeneMax)
-FloatGeneRandomFactory   = _new_factory(FloatGeneRandom)
-FloatGeneRandRangeFactory = _new_factory(FloatGeneRandRange)
-FloatGeneExchangeFactory = _new_factory(FloatGeneExchange)
+# FloatGeneFactory         = _new_factory(FloatGene)
+# FloatGeneMaxFactory      = _new_factory(FloatGeneMax)
+# FloatGeneRandomFactory   = _new_factory(FloatGeneRandom)
+# FloatGeneRandRangeFactory = _new_factory(FloatGeneRandRange)
+# FloatGeneExchangeFactory = _new_factory(FloatGeneExchange)
 
-IntGeneFactory          = _new_factory(IntGene)
-IntGeneExchangeFactory  = _new_factory(IntGeneExchange)
-IntGeneAverageFactory   = _new_factory(IntGeneAverage)
-IntGeneRandRangeFactory = _new_factory(IntGeneRandRange)
+# IntGeneFactory          = _new_factory(IntGene)
+# IntGeneExchangeFactory  = _new_factory(IntGeneExchange)
+# IntGeneAverageFactory   = _new_factory(IntGeneAverage)
+# IntGeneRandRangeFactory = _new_factory(IntGeneRandRange)
 
-CharGeneFactory          = _new_factory(CharGene)
-AsciiCharGeneFactory     = _new_factory(AsciiCharGene)
-PrintableCharGeneFactory = _new_factory(PrintableCharGene)
+# CharGeneFactory          = _new_factory(CharGene)
+# AsciiCharGeneFactory     = _new_factory(AsciiCharGene)
+# PrintableCharGeneFactory = _new_factory(PrintableCharGene)
 
 
 # utility functions
