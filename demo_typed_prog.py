@@ -77,7 +77,7 @@ class MyTypedProg(ProgOrganism):
         {
             'x': uniform(-10.0, 10.0),
             'y': uniform(-10.0, 10.0),
-        } for i in xrange(20)
+        } for i in range(20)
     ]
 
 
@@ -110,7 +110,7 @@ class MyTypedProg(ProgOrganism):
 
 
 class TypedProgPop(Population):
-    u"""Population class for typed programming demo"""
+    """Population class for typed programming demo"""
 
     species = MyTypedProg
     initPopulation = 30
@@ -125,17 +125,17 @@ class TypedProgPop(Population):
 
 def graph(orig, best):
     "Graph on -10, 10 ranges"
-    print "ORIG                                  BEST:"
+    print("ORIG                                  BEST:")
     for y in range(10, -11, -2):
         for x in range(-10, 11, 3):
             z = orig(x=float(x), y=float(y))
-            print "%03.0f " % z,
+            print("%03.0f " % z, end=' ')
 
-        print "  ",
+        print("  ", end=' ')
         for x in range(-10, 11, 3):
             z = best(x=float(x), y=float(y))
-            print "%03.0f " % z,
-        print
+            print("%03.0f " % z, end=' ')
+        print()
 
 def main(nfittest=10, nkids=100):
     pop = TypedProgPop()
@@ -144,12 +144,12 @@ def main(nfittest=10, nkids=100):
     i = 0
     while True:
         b = pop.best()
-        print "Generation %s: %s best=%s average=%s)" % (
-            ngens, str(b), b.fitness(), pop.fitness())
+        print("Generation %s: %s best=%s average=%s)" % (
+            ngens, str(b), b.fitness(), pop.fitness()))
         b.dump(1)
         graph(b.testFunc, b.calc)
         if b.fitness() <= 0.4:
-            print "Cracked!"
+            print("Cracked!")
             break
         i += 1
         ngens += 1
@@ -157,7 +157,7 @@ def main(nfittest=10, nkids=100):
         if ngens < 100:
             pop.gen()
         else:
-            print "Failed after 100 generations, restarting"
+            print("Failed after 100 generations, restarting")
             time.sleep(1)
             pop = TypedProgPop()
             ngens = 0

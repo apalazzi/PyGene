@@ -21,14 +21,14 @@ One section per gene.
 'type' is necessary - other fields depends on the selected type
 """
 
-import ConfigParser
-from ConfigParser import NoOptionError
+import configparser
+from configparser import NoOptionError
 
-from gene import ComplexGeneFactory
-from gene import IntGeneFactory, IntGeneExchangeFactory
-from gene import IntGeneAverageFactory, IntGeneRandRangeFactory
-from gene import FloatGeneFactory, FloatGeneRandomFactory, FloatGeneMaxFactory
-from gene import FloatGeneExchangeFactory, FloatGeneRandRangeFactory
+from .gene import ComplexGeneFactory
+from .gene import IntGeneFactory, IntGeneExchangeFactory
+from .gene import IntGeneAverageFactory, IntGeneRandRangeFactory
+from .gene import FloatGeneFactory, FloatGeneRandomFactory, FloatGeneMaxFactory
+from .gene import FloatGeneExchangeFactory, FloatGeneRandRangeFactory
 
 class LoaderError(Exception):
     pass
@@ -88,7 +88,7 @@ class ConfigLoader(object):
 
         self.require_genes = require_genes
 
-        self.config = ConfigParser.RawConfigParser()
+        self.config = configparser.RawConfigParser()
         self.config.optionxform = str # Don't lower() names
 
         if filename is None and config_contents is not None:
@@ -122,7 +122,7 @@ class ConfigLoader(object):
         Parse population options and return a population
         """
         import new
-        from population import Population
+        from .population import Population
 
         if not self.has_population:
             raise LoaderError("No population is defined in the config file")

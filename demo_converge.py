@@ -60,7 +60,7 @@ def main():
             best = pop.best()
             
             # and dump it out
-            print best
+            print(best)
 
     except KeyboardInterrupt:
         pass

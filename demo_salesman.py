@@ -107,7 +107,7 @@ if 0:
 
 if 1:
     cities = []
-    for i in xrange(numCities):
+    for i in range(numCities):
         cities.append(City("%s" % i))
 
 cityNames = [city.name for city in cities]
@@ -120,7 +120,7 @@ for city in cities:
 
 priInterval = (geneRandMax - geneRandMin) / cityCount
 priNormal = []
-for i in xrange(cityCount):
+for i in range(cityCount):
     priNormal.append(((i+0.25)*priInterval, (i+0.75)*priInterval))
 
 genome = {}
@@ -150,7 +150,7 @@ class TSPSolution(OrganismClass):
         sortedCities = self.getCitiesInOrder()
 
         # start at first city, compute distances to last
-        for i in xrange(cityCount - 1):
+        for i in range(cityCount - 1):
             distance += sortedCities[i] - sortedCities[i+1]
 
         # and add in the return trip
@@ -184,7 +184,7 @@ class TSPSolution(OrganismClass):
         modifies the genes to a reasonably even spacing
         """
         genes = self.genes
-        for i in xrange(2):
+        for i in range(2):
             sorter = [(genes[name][i], name) for name in cityNames]
             sorter.sort()
             sortedGenes = [tup[1] for tup in sorter]
@@ -223,11 +223,11 @@ def main():
 
     try:
         while True:
-            print "gen=%s best=%s avg=%s" % (i, pop.best().get_fitness(), pop.fitness())
+            print("gen=%s best=%s avg=%s" % (i, pop.best().get_fitness(), pop.fitness()))
             pop.gen()
             i += 1
     except KeyboardInterrupt:
-        print
+        print()
 
 
     # get the best solution
@@ -235,10 +235,10 @@ def main():
 
     # and print out the itinerary
     sortedCities = solution.getCitiesInOrder()
-    print "Best solution: total distance %04.2f in %.3f seconds:" % (
-        solution.fitness(), time() - s)
+    print("Best solution: total distance %04.2f in %.3f seconds:" % (
+        solution.fitness(), time() - s))
     for city in sortedCities:
-        print "  x=%03.2f y=%03.2f %s" % (city.x, city.y, city.name)
+        print("  x=%03.2f y=%03.2f %s" % (city.x, city.y, city.name))
 
 if __name__ == '__main__':
     main()

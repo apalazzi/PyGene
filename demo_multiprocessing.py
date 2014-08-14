@@ -21,7 +21,7 @@ from pygene.population import Population
 # Fitness function - global and unbound, for multiprocessing to be able to Pickle it
 def calculate_fitness(guess, numgenes):
 	diffs = 0.0
-	for i in xrange(numgenes):
+	for i in range(numgenes):
 		x0 = teststrNums[i]
 		x1 = ord(guess[i])
 		diffs += (x1 - x0) ** 2
@@ -68,7 +68,7 @@ class StringHacker(Organism):
         Return the gene values as a string
         """
         chars = []
-        for i in xrange(self.numgenes):
+        for i in range(self.numgenes):
 
             #x = self[str(i)]
             #print "x=%s" % repr(x)
@@ -106,10 +106,10 @@ def main(nfittest=10, nkids=100):
     i = 0
     while True:
         b = ph.best()
-        print "generation %s: %s best=%s average=%s)" % (
-            i, repr(b), b.get_fitness(), ph.fitness())
+        print("generation %s: %s best=%s average=%s)" % (
+            i, repr(b), b.get_fitness(), ph.fitness()))
         if b.get_fitness() <= 0:
-            print "cracked!"
+            print("cracked!")
             break
         i += 1
         ph.gen()

@@ -12,7 +12,7 @@ import sys, new
 from random import random, randint, uniform, choice
 from math import sqrt
 
-from xmlio import PGXmlMixin
+from .xmlio import PGXmlMixin
 
 class BaseGene(PGXmlMixin):
     """
@@ -323,11 +323,11 @@ class IntGene(BaseGene):
     """
     # minimum possible value for gene
     # override in subclasses as needed
-    randMin = -sys.maxint
+    randMin = -sys.maxsize
 
     # maximum possible value for gene
     # override in subclasses as needed
-    randMax = sys.maxint + 1
+    randMax = sys.maxsize + 1
 
     # maximum amount by which gene can mutate
     mutAmt = 1
@@ -461,7 +461,7 @@ class CharGene(BaseGene):
         returns an int value, based on a formula of higher
         numbers dominating
         """
-        print "HERE", self.value, other.value
+        print("HERE", self.value, other.value)
         return max(self.value, other.value)
 
 
@@ -471,7 +471,7 @@ class CharGeneExchange(CharGene):
         A variation of char gene where during the mixing a
         average of two genes is selected.
         """
-        print "HERE", self.value, other.value
+        print("HERE", self.value, other.value)
         return choice([self.value, other.value])
 
 
@@ -661,7 +661,7 @@ def _new_factory(cls):
     "Creates gene factories"
     def factory(name, **kw):
         "Gene factory"
-        for key in kw.iterkeys():
+        for key in kw.keys():
             if key not in cls.fields:
                 raise Exception("Tried to create a gene with an invalid field: " + key)
         return new.classobj(name, (cls,), kw)

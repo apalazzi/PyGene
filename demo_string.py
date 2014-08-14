@@ -89,10 +89,10 @@ def main():
     started = time()
     while True:
         b = world.best()
-        print "generation %02d: %s best=%s average=%s)" % (
-            i, repr(b), b.get_fitness(), world.fitness())
+        print("generation %02d: %s best=%s average=%s)" % (
+            i, repr(b), b.get_fitness(), world.fitness()))
         if b.get_fitness() <= 0:
-            print "cracked in ", i, "generations and ", time() - started, "seconds"
+            print("cracked in ", i, "generations and ", time() - started, "seconds")
             break
         i += 1
         world.gen()

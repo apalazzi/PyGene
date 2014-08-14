@@ -47,7 +47,7 @@ class StringHacker(Organism):
         Return the gene values as a string
         """
         chars = []
-        for k in xrange(self.numgenes):
+        for k in range(self.numgenes):
 
             n = self[str(k)]
             #print "n=%s" % repr(n)
@@ -65,7 +65,7 @@ class StringHacker(Organism):
         """
         diffs = 0.0
         guess = str(self)
-        for i in xrange(self.numgenes):
+        for i in range(self.numgenes):
             x0 = teststrNums[i]
             x1 = ord(guess[i])
             diffs += (x1 - x0) ** 2
@@ -94,10 +94,10 @@ def main():
     i = 0
     while True:
         b = world.best()
-        print "generation %s: %s best=%s average=%s)" % (
-            i, repr(b), b.get_fitness(), world.fitness())
+        print("generation %s: %s best=%s average=%s)" % (
+            i, repr(b), b.get_fitness(), world.fitness()))
         if b.get_fitness() <= 0:
-            print "cracked!"
+            print("cracked!")
             break
         i += 1
         world.gen()

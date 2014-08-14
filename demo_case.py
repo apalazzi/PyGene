@@ -125,17 +125,17 @@ class CodeHackerPopulation(Population):
 def main():
 
     # Display codes
-    print "CODES TO BREAK:",
+    print("CODES TO BREAK:", end=' ')
     for code in codes:
-        print "".join(str(digit) for digit in code),
-    print
+        print("".join(str(digit) for digit in code), end=' ')
+    print()
 
     # Display some statistics
     combinations = 10**(locks * digits_in_lock)
     operations = 10000 * 10**6
-    print "Theoretical number of combinations", combinations
-    print "Optimistic operations per second:", operations
-    print "Direct bruteforce time:", 1.0* combinations / operations / 60.0/60/24, "days"
+    print("Theoretical number of combinations", combinations)
+    print("Optimistic operations per second:", operations)
+    print("Direct bruteforce time:", 1.0* combinations / operations / 60.0/60/24, "days")
 
     # Hack the case.
     started = time()
@@ -146,14 +146,14 @@ def main():
     i = 0
     while True:
         b = ph.best()
-        print "generation %02d: %s best=%s average=%s)" % (
-            i, repr(b), b.get_fitness(), ph.fitness())
+        print("generation %02d: %s best=%s average=%s)" % (
+            i, repr(b), b.get_fitness(), ph.fitness()))
 
         if b.get_fitness() < 1:
             #for org in ph:
             #    print "  ", org
 
-            print "cracked in ", i, "generations and ", time() - started, "seconds"
+            print("cracked in ", i, "generations and ", time() - started, "seconds")
             break
 
         sys.stdout.flush()

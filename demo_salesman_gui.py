@@ -9,7 +9,7 @@ pyFLTK widgets (http://pyfltk.sourceforge.net)
 try:
     from fltk import *
 except ImportError:
-    print "This demo requires fltk installed in order to work!"
+    print("This demo requires fltk installed in order to work!")
     import sys
     sys.exit(1)
 
@@ -19,7 +19,7 @@ except ImportError:
     psyco = None 
 
 from threading import Lock
-from thread import start_new_thread
+from _thread import start_new_thread
 from time import sleep
 
 from random import random
@@ -126,7 +126,7 @@ if 0:
 
 if 1:
     cities = []
-    for i in xrange(numCities):
+    for i in range(numCities):
         cities.append(City("%s" % i))
 
 cityNames = [city.name for city in cities]
@@ -139,7 +139,7 @@ for city in cities:
 
 priInterval = (geneRandMax - geneRandMin) / cityCount
 priNormal = []
-for i in xrange(cityCount):
+for i in range(cityCount):
     priNormal.append(((i+0.25)*priInterval, (i+0.75)*priInterval))
 
 genome = {}
@@ -169,7 +169,7 @@ class TSPSolution(OrganismClass):
         sortedCities = self.getCitiesInOrder()
 
         # start at first city, compute distances to last
-        for i in xrange(cityCount - 1):
+        for i in range(cityCount - 1):
             distance += sortedCities[i] - sortedCities[i+1]
         
         # and add in the return trip
@@ -203,7 +203,7 @@ class TSPSolution(OrganismClass):
         modifies the genes to a reasonably even spacing
         """
         genes = self.genes
-        for i in xrange(2):
+        for i in range(2):
             sorter = [(genes[name][i], name) for name in cityNames]
             sorter.sort()
             sortedGenes = [tup[1] for tup in sorter]
@@ -272,7 +272,7 @@ class TSPCanvas(Fl_Box):
         # get the cities in order
         order = best.getCitiesInOrder()
     
-        print "best=%s" % fitness
+        print("best=%s" % fitness)
     
         # draw the city names
         fl_color(FL_BLACK)
@@ -293,7 +293,7 @@ class TSPCanvas(Fl_Box):
             fl_color(FL_RED)
     
         # now draw the journey
-        for i in xrange(len(order)-1):
+        for i in range(len(order)-1):
             city0, city1 = order[i:i+2]
             fl_line(int(city0.x), int(city0.y), int(city1.x), int(city1.y))
     
@@ -412,7 +412,7 @@ class TSPGui:
         """
         create and display generation
         """
-        print "threadUpdate starting"
+        print("threadUpdate starting")
     
         while True:
     
@@ -435,7 +435,7 @@ def main():
     gui = TSPGui()
 
     if psyco:
-        print "Starting psyco"
+        print("Starting psyco")
         psyco.full()
 
     gui.run()

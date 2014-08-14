@@ -81,7 +81,7 @@ class FracOrganism(Organism):
         guessData = self.getDataSet()
         badness = 0.0
         ratios = [100000.0 * guessData[i] / targetData[i] \
-            for i in xrange(targetDataLen)]
+            for i in range(targetDataLen)]
         try:
             sd, mean = sdev(ratios)
             var = sd / mean
@@ -99,7 +99,7 @@ class FracOrganism(Organism):
         org = self['init']
         delta = self['delta']
         niterations = self['iterations']
-        for i in xrange(targetDataLen):
+        for i in range(targetDataLen):
             #guessData.append(self.mand(org, niterations))
             guessData.append(self.mand(org))
             org += delta
@@ -113,7 +113,7 @@ class FracOrganism(Organism):
         """
         c = complex(0,0)
         
-        for i in xrange(niterations):
+        for i in range(niterations):
             c = c * c + org
         
         return abs(c)
@@ -174,7 +174,7 @@ def main():
             # and dump it out
             #print [("%.2f %.2f" % (o['x1'], o['x2'])) for o in pop.organisms]
             best = pop.organisms[0]
-            print "fitness=%s" % (best.fitness(),)
+            print("fitness=%s" % (best.fitness(),))
 
     except KeyboardInterrupt:
         pass

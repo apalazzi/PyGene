@@ -122,14 +122,14 @@ def main():
             # and dump it out
             #print [("%.2f %.2f" % (o['x1'], o['x2'])) for o in pop.organisms]
             best = pop.organisms[0]
-            print "fitness=%f avg=%f x1=%f x2=%f" % (best.get_fitness(), pop.fitness(),
-                                                     best['x1'], best['x2'])
+            print("fitness=%f avg=%f x1=%f x2=%f" % (best.get_fitness(), pop.fitness(),
+                                                     best['x1'], best['x2']))
             if best.get_fitness() < 0.6:
                 break
 
     except KeyboardInterrupt:
         pass
-    print "Executed", generations, "generations in", time() - s, "seconds"
+    print("Executed", generations, "generations in", time() - s, "seconds")
 
 
 if __name__ == '__main__':
