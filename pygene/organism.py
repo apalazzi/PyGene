@@ -15,6 +15,7 @@ Subclasses of Organism must override the following methods:
 Refer to module pygene.prog for organism classes for genetic
 programming.
 """
+from functools import total_ordering
 
 from random import random, randrange, randint, choice
 
@@ -23,6 +24,7 @@ from .gamete import Gamete
 
 from .xmlio import PGXmlMixin
 
+@total_ordering
 class BaseOrganism(PGXmlMixin):
     """
     Base class for genetic algo and genetic programming
@@ -108,9 +110,23 @@ class BaseOrganism(PGXmlMixin):
         Convenience method which invokes duel
 
         Allows lists of organisms to be sorted
+        Works only in python2.x
         """
         return self.duel(other)
 
+    def _is_valid_operand(self, other):
+        return(hasattr(other, "fitness"))
+        
+    def __eq__(self, other):
+        if not self._is_valid_operand(other):
+            return NotImplemented
+        return (self.get_fitness() == other.get_fitness())
+        
+    def __lt__(self, other):
+        if not self._is_valid_operand(other):
+            return NotImplemented
+        return (self.get_fitness() < other.get_fitness())
+        
     def __repr__(self):
         """
         Delivers a minimal string representation
