@@ -202,7 +202,7 @@ class Population(PGXmlMixin):
         #    stats[j] = 0
 
         # wild orgy, have lots of children
-        nchildren = 1 if nchildren == 1 else nchildren / 2
+        ## nchildren = int(nchildren/2)+1 #why divide by 2? apalazzi
         for i in range(nchildren):
             # pick one parent randomly, favouring fittest
             idx1 = idx2 = int(sqrt(randrange(n2adults)))
